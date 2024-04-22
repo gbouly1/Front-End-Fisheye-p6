@@ -61,3 +61,11 @@ h1 {
 .priceElement {
   color: #757575;
 }
+
+.taglineElement {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
