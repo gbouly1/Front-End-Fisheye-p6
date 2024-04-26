@@ -1,3 +1,6 @@
+import { photographerTemplate } from "../templates/photographer.js";
+
+// On récupère les données des photographes dans le dossier JSON
 async function getPhotographers() {
   try {
     const response = await fetch("data/photographers.json");
@@ -12,14 +15,17 @@ async function getPhotographers() {
   }
 }
 
+// on affiche les données des photographe sur la page d'accueil
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
-  });
+  if (window.location.pathname !== "/photographer.html") {
+    photographers.forEach((photographer) => {
+      const photographerModel = photographerTemplate(photographer);
+      const userCardDOM = photographerModel.getUserCardDOM();
+      photographersSection.appendChild(userCardDOM);
+    });
+  }
 }
 
 async function init() {
@@ -27,5 +33,42 @@ async function init() {
   const photographers = await getPhotographers();
   displayData(photographers);
 }
-
 init();
+
+// on récupère les data des photographes en fonction de leur id
+async function getPhotographerById(id) {
+  try {
+    const response = await fetch("data/photographers.json");
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des données");
+    }
+    const data = await response.json();
+    // Trouver le photographe avec l'ID correspondant
+    const photographer = data.photographers.find((p) => p.id === parseInt(id));
+    if (!photographer) {
+      throw new Error("Photographe non trouvé");
+    }
+    return photographer;
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+}
+
+// Fonction pour afficher les détails du photographe
+export async function displayPhotographer(id) {
+  try {
+    const photographerData = await getPhotographerById(id);
+    const headerSection = document.querySelector(".photograph-header");
+
+    if (photographerData) {
+      const photographerDOM = photographerTemplate(photographerData, false);
+      const userCardDOM = photographerDOM.getUserCardDOM();
+      headerSection.appendChild(userCardDOM);
+    } else {
+      console.error("Photographe non trouvé");
+    }
+  } catch (error) {
+    console.error("Erreur lors de l'affichage du photographe :", error);
+  }
+}
