@@ -81,3 +81,26 @@ async function getMediaByPhotographerId(photographerId) {
 if (photographerId) {
   displayMediaByPhotographerId(photographerId);
 }
+
+// affichage dans la console tu nombre total de like
+async function totalLikesByPhotographer(photographerId) {
+  try {
+    // Récupérer les médias du photographe par son ID
+    const media = await getMediaByPhotographerId(photographerId);
+
+    // Initialiser le total des likes
+    let totalLikes = 0;
+
+    // Additionner les likes de chaque média
+    media.forEach((m) => {
+      totalLikes += m.likes;
+    });
+
+    return totalLikes;
+  } catch (error) {
+    console.error("Erreur lors du calcul du total des likes :", error);
+    return null;
+  }
+}
+
+console.log(totalLikesByPhotographer(photographerId));
