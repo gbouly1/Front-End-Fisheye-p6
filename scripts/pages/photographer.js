@@ -109,7 +109,6 @@ async function totalLikesByPhotographer(photographerId) {
     totalLikesElement.innerHTML = totalLikes;
     const priceElement = document.createElement("p");
     priceElement.innerHTML = `${data.price}€ / jour`;
-    console.log(priceElement);
 
     boxMedia.appendChild(totalLikesElement);
     boxMedia.appendChild(priceElement);
@@ -122,4 +121,4 @@ async function totalLikesByPhotographer(photographerId) {
   }
 }
 
-console.log(totalLikesByPhotographer(photographerId));
+totalLikesByPhotographer(photographerId);
