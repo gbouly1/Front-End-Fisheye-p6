@@ -36,7 +36,7 @@ async function init() {
 init();
 
 // on récupère les data des photographes en fonction de leur id
-async function getPhotographerById(id) {
+export async function getPhotographerById(id) {
   try {
     const response = await fetch("data/photographers.json");
     if (!response.ok) {

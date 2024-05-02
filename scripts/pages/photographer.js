@@ -1,4 +1,5 @@
 import { displayPhotographer } from "./index.js";
+import { getPhotographerById } from "./index.js";
 
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -9,11 +10,11 @@ displayPhotographer(photographerId);
 
 async function displayMediaByPhotographerId(photographerId) {
   try {
-    const mediaData = await getMediaByPhotographerId(photographerId);
+    const media = await getMediaByPhotographerId(photographerId);
     const mediaContainer = document.querySelector(".media-container");
 
-    if (mediaData) {
-      mediaData.forEach((media) => {
+    if (media) {
+      media.forEach((media) => {
         const mediaElement = createMediaElement(media);
         mediaContainer.appendChild(mediaElement);
       });
@@ -87,6 +88,7 @@ async function totalLikesByPhotographer(photographerId) {
   try {
     // Récupérer les médias du photographe par son ID
     const media = await getMediaByPhotographerId(photographerId);
+    const data = await getPhotographerById(photographerId);
 
     // Initialiser le total des likes
     let totalLikes = 0;
@@ -96,7 +98,24 @@ async function totalLikesByPhotographer(photographerId) {
       totalLikes += m.likes;
     });
 
-    return totalLikes;
+    // On récupère le main dans la page pour afficher la box en bas a droite de la page avec le total des likes et le prix
+    const mainContainer = document.querySelector("#main");
+
+    // On créer la box
+    const boxMedia = document.createElement("div");
+    boxMedia.classList.add("boxMedia");
+    // On créer les élément contenant les likes et le prix
+    const totalLikesElement = document.createElement("p");
+    totalLikesElement.innerHTML = totalLikes;
+    const priceElement = document.createElement("p");
+    priceElement.innerHTML = `${data.price}€ / jour`;
+    console.log(priceElement);
+
+    boxMedia.appendChild(totalLikesElement);
+    boxMedia.appendChild(priceElement);
+    mainContainer.appendChild(boxMedia);
+
+    return { totalLikes, photographerPrice: data.price };
   } catch (error) {
     console.error("Erreur lors du calcul du total des likes :", error);
     return null;

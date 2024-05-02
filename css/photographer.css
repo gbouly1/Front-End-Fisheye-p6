@@ -183,3 +183,28 @@ form input {
   font-weight: 500;
   line-height: normal;
 }
+
+.boxMedia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px 5px 0 0;
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  width: 24rem;
+  height: 5rem;
+  background: #db8876;
+}
+
+.boxMedia p {
+  color: #000;
+
+  text-align: center;
+  font-family: "DM Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+}
