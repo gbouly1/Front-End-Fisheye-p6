@@ -55,6 +55,30 @@ export async function getPhotographerById(id) {
   }
 }
 
+// On récupère les média de chaque photographe en fonction de leur ID
+export async function getMediaByPhotographerId(photographerId) {
+  try {
+    const response = await fetch("data/photographers.json");
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des données");
+    }
+    const data = await response.json();
+    const photographer = data.photographers.find(
+      (p) => p.id === parseInt(photographerId)
+    );
+    if (!photographer) {
+      throw new Error("Photographe non trouvé");
+    }
+    const media = data.media.filter(
+      (m) => m.photographerId === parseInt(photographerId)
+    );
+    return media;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 // Fonction pour afficher les détails du photographe
 export async function displayPhotographer(id) {
   try {

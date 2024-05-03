@@ -9,8 +9,10 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header id="header">
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -36,9 +38,9 @@
           <input type="email" id="email" name="email" required><br>
         
           <label for="message" aria-label="Votre message">Votre message :</label><br>
-          <textarea id="message" name="message" cols="95" rows="15"  required></textarea><br>
+          <input type="message" id="message" name="message"></input><br>
         
-          <input type="submit" value="Envoyer" aria-label="Envoyer le formulaire">
+          <input type="submit" id="envoyer" value="Envoyer" aria-label="Envoyer le formulaire">
         </form>
 			</div>
 		</div>

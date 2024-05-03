@@ -1,5 +1,6 @@
 import { displayPhotographer } from "./index.js";
 import { getPhotographerById } from "./index.js";
+import { getMediaByPhotographerId } from "./index.js";
 
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -77,61 +78,12 @@ function createMediaElement(media) {
   return mediaElement;
 }
 
-async function getMediaByPhotographerId(photographerId) {
-  try {
-    const response = await fetch("data/photographers.json");
-    if (!response.ok) {
-      throw new Error("Erreur lors de la récupération des données");
-    }
-    const data = await response.json();
-    const photographer = data.photographers.find(
-      (p) => p.id === parseInt(photographerId)
-    );
-    if (!photographer) {
-      throw new Error("Photographe non trouvé");
-    }
-    const media = data.media.filter(
-      (m) => m.photographerId === parseInt(photographerId)
-    );
-    return media;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
 // Appel de la fonction pour afficher les médias du photographe
 if (photographerId) {
   displayMediaByPhotographerId(photographerId);
 }
 
-// Fonction pour mettre à jour le nombre total de likes
-async function updateTotalLikes(photographerId) {
-  try {
-    let totalLikes = 0;
-
-    const media = await getMediaByPhotographerId(photographerId);
-
-    media.forEach((m) => {
-      totalLikes += m.likes;
-    });
-
-    const totalLikesElement = document.getElementById("totalLikes");
-
-    if (totalLikesElement) {
-      totalLikesElement.innerHTML = totalLikes;
-    }
-
-    return totalLikes;
-  } catch (error) {
-    console.error(
-      "Erreur lors de la mise à jour du nombre total de likes :",
-      error
-    );
-    return null;
-  }
-}
-
+// initialiser le total de likes
 let totalLikes = 0;
 // affichage dans la console tu nombre total de like
 async function totalLikesByPhotographer(photographerId) {
@@ -139,9 +91,6 @@ async function totalLikesByPhotographer(photographerId) {
     // Récupérer les médias du photographe par son ID
     const media = await getMediaByPhotographerId(photographerId);
     const data = await getPhotographerById(photographerId);
-
-    // Initialiser le total des likes
-    // let totalLikes = 0;
 
     // Additionner les likes de chaque média
     media.forEach((m) => {
@@ -154,15 +103,25 @@ async function totalLikesByPhotographer(photographerId) {
     // On créer la box
     const boxMedia = document.createElement("div");
     boxMedia.classList.add("boxMedia");
-    // On créer les élément contenant les likes et le prix
+
+    // On créer les élément contenant les likes et le coeur
+    const divTotalLikes = document.createElement("div");
     const totalLikesElement = document.createElement("p");
     totalLikesElement.classList.add("total-likes");
     totalLikesElement.innerHTML = totalLikes;
+    const hearthElement = document.createElement("img");
+    hearthElement.classList.add("hearth-likes-box");
+    hearthElement.src = `assets/icons/favorite.png`;
+
+    // on créer l'élément contenant le prix
     const priceElement = document.createElement("p");
     priceElement.innerHTML = `${data.price}€ / jour`;
 
-    boxMedia.appendChild(totalLikesElement);
+    divTotalLikes.appendChild(totalLikesElement);
+    divTotalLikes.appendChild(hearthElement);
+    boxMedia.appendChild(divTotalLikes);
     boxMedia.appendChild(priceElement);
+
     mainContainer.appendChild(boxMedia);
 
     return { totalLikes, photographerPrice: data.price };

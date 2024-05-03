@@ -39,13 +39,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 35px;
   margin: auto;
   position: fixed;
   top: 5%;
   left: 29%;
-  height: 75%;
+  /* height: 75%; */
 }
 
 .modal header {
@@ -90,8 +90,27 @@ form input {
   border-radius: 5px;
 }
 
-form textarea {
-  width: 100%;
+#message {
+  height: 170px;
+}
+
+#prenom,
+#nom,
+#email {
+  height: 50px;
+}
+
+#envoyer {
+  font-family: "DM sans";
+  font-size: 18px;
+  height: 70px;
+  width: 170px;
+  color: white;
+  background: #901c1c;
+}
+
+.opacity-fifty {
+  opacity: 50%;
 }
 
 /* CSS du header de la page photographe  */
@@ -233,4 +252,14 @@ form textarea {
   font-style: normal;
   font-weight: bold;
   line-height: normal;
+}
+
+.boxMedia div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hearth-likes-box {
+  color: #000;
 }
