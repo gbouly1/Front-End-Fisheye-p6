@@ -26,6 +26,7 @@ async function displayMediaByPhotographerId(photographerId) {
   }
 }
 
+// On créer a card des media
 function createMediaElement(media) {
   const { title, image, video, likes, photographerId } = media;
   const mediaElement = document.createElement("div");
@@ -46,15 +47,36 @@ function createMediaElement(media) {
   infoMedia.classList.add("info-media");
   const titleMedia = document.createElement("h3");
   titleMedia.innerHTML = title;
+
+  const divLikes = document.createElement("div");
+  divLikes.classList.add("div-likes");
   const likesMedia = document.createElement("p");
   likesMedia.innerHTML = likes;
+  const aLikes = document.createElement("a");
+  aLikes.href = "#";
+  aLikes.addEventListener("click", (event) => {
+    event.preventDefault();
+    media.likes++;
+    likesMedia.innerHTML = media.likes;
+    aLikes.classList.add("pointer-event-none");
+    totalLikes++;
+    const updateTotalLikes = document.querySelector(".total-likes");
+    updateTotalLikes.innerHTML = totalLikes;
+  });
+  const heartLikes = document.createElement("img");
+  heartLikes.classList.add("hearth-likes");
+  heartLikes.src = `assets/icons/vector.png`;
+  divLikes.appendChild(likesMedia);
+  aLikes.appendChild(heartLikes);
+  divLikes.appendChild(aLikes);
 
   infoMedia.appendChild(titleMedia);
-  infoMedia.appendChild(likesMedia);
+  infoMedia.appendChild(divLikes);
 
   mediaElement.appendChild(infoMedia);
   return mediaElement;
 }
+
 async function getMediaByPhotographerId(photographerId) {
   try {
     const response = await fetch("data/photographers.json");
@@ -83,6 +105,34 @@ if (photographerId) {
   displayMediaByPhotographerId(photographerId);
 }
 
+// Fonction pour mettre à jour le nombre total de likes
+async function updateTotalLikes(photographerId) {
+  try {
+    let totalLikes = 0;
+
+    const media = await getMediaByPhotographerId(photographerId);
+
+    media.forEach((m) => {
+      totalLikes += m.likes;
+    });
+
+    const totalLikesElement = document.getElementById("totalLikes");
+
+    if (totalLikesElement) {
+      totalLikesElement.innerHTML = totalLikes;
+    }
+
+    return totalLikes;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la mise à jour du nombre total de likes :",
+      error
+    );
+    return null;
+  }
+}
+
+let totalLikes = 0;
 // affichage dans la console tu nombre total de like
 async function totalLikesByPhotographer(photographerId) {
   try {
@@ -91,7 +141,7 @@ async function totalLikesByPhotographer(photographerId) {
     const data = await getPhotographerById(photographerId);
 
     // Initialiser le total des likes
-    let totalLikes = 0;
+    // let totalLikes = 0;
 
     // Additionner les likes de chaque média
     media.forEach((m) => {
@@ -106,6 +156,7 @@ async function totalLikesByPhotographer(photographerId) {
     boxMedia.classList.add("boxMedia");
     // On créer les élément contenant les likes et le prix
     const totalLikesElement = document.createElement("p");
+    totalLikesElement.classList.add("total-likes");
     totalLikesElement.innerHTML = totalLikes;
     const priceElement = document.createElement("p");
     priceElement.innerHTML = `${data.price}€ / jour`;

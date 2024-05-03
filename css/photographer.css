@@ -193,6 +193,22 @@ form textarea {
   line-height: normal;
 }
 
+.div-likes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.info-media .hearth-likes {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.pointer-event-none {
+  pointer-events: none;
+}
+
 /* CSS de la box de la page photographers qui affiche le totalLikes et le prix  */
 
 .boxMedia {
