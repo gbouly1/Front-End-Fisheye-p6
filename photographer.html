@@ -3,6 +3,7 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -27,7 +28,7 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermeture de la modale"/>
         </header>
-				<form action="/submit_form" method="post">
+				<form action="/submit_form" id="form" method="post">
           <label for="prenom" aria-label="Prénom">Prénom :</label>
           <input type="text" id="prenom" name="prenom" required><br>
         
@@ -39,8 +40,9 @@
         
           <label for="message" aria-label="Votre message">Votre message :</label><br>
           <input type="message" id="message" name="message"></input><br>
+
+          <button type="submit" id='send-form' aria-label="bouton d'envoie du formulaire">Envoyer</button>
         
-          <input type="submit" id="envoyer" value="Envoyer" aria-label="Envoyer le formulaire">
         </form>
 			</div>
 		</div>
@@ -48,5 +50,6 @@
     <script src="/scripts/pages/photographer.js" type="module" ></script>
     <!-- <script src="scripts/pages/index.js" type="module" ></script> -->
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

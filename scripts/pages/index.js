@@ -1,4 +1,5 @@
 import { photographerTemplate } from "../templates/photographer.js";
+import { createMediaElement } from "../templates/photographer.js";
 
 // On récupère les données des photographes dans le dossier JSON
 async function getPhotographers() {
@@ -55,6 +56,24 @@ export async function getPhotographerById(id) {
   }
 }
 
+// Fonction pour afficher les détails du photographe
+export async function displayPhotographer(id) {
+  try {
+    const photographerData = await getPhotographerById(id);
+    const headerSection = document.querySelector(".photograph-header");
+
+    if (photographerData) {
+      const photographerDOM = photographerTemplate(photographerData, false);
+      const userCardDOM = photographerDOM.getUserCardDOM();
+      headerSection.appendChild(userCardDOM);
+    } else {
+      console.error("Photographe non trouvé");
+    }
+  } catch (error) {
+    console.error("Erreur lors de l'affichage du photographe :", error);
+  }
+}
+
 // On récupère les média de chaque photographe en fonction de leur ID
 export async function getMediaByPhotographerId(photographerId) {
   try {
@@ -79,20 +98,21 @@ export async function getMediaByPhotographerId(photographerId) {
   }
 }
 
-// Fonction pour afficher les détails du photographe
-export async function displayPhotographer(id) {
+// Fonction pour afficher les photos de chaque photographes
+export async function displayMediaByPhotographerId(photographerId) {
   try {
-    const photographerData = await getPhotographerById(id);
-    const headerSection = document.querySelector(".photograph-header");
+    const media = await getMediaByPhotographerId(photographerId);
+    const mediaContainer = document.querySelector(".media-container");
 
-    if (photographerData) {
-      const photographerDOM = photographerTemplate(photographerData, false);
-      const userCardDOM = photographerDOM.getUserCardDOM();
-      headerSection.appendChild(userCardDOM);
+    if (media) {
+      media.forEach((media) => {
+        const mediaElement = createMediaElement(media);
+        mediaContainer.appendChild(mediaElement);
+      });
     } else {
-      console.error("Photographe non trouvé");
+      console.error("Aucun média trouvé pour ce photographe.");
     }
   } catch (error) {
-    console.error("Erreur lors de l'affichage du photographe :", error);
+    console.error("Erreur lors de l'affichage des médias :", error);
   }
 }
