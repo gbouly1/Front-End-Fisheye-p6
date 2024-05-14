@@ -59,7 +59,8 @@ export function createMediaElement(media) {
   const { title, image, video, likes, photographerId } = media;
   const aElement = document.createElement("a");
   aElement.classList.add("a-media");
-  aElement.href = `assets/sample-photos/${photographerId}/${image}`;
+  aElement.href = "#";
+
   const mediaElement = document.createElement("div");
   mediaElement.classList.add("media");
 

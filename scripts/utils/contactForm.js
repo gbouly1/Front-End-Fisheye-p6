@@ -19,7 +19,7 @@ function displayModal() {
 // on ferme la modal et enlève le style du header et main
 function closeModal() {
   const modal = document.getElementById("contact_modal");
-  headerPage.classList.remove("opacity-fifty ");
+  headerPage.classList.remove("opacity-fifty");
   mainPage.classList.remove("opacity-fifty");
   modal.style.display = "none";
 }

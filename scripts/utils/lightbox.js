@@ -1,6 +1,11 @@
-let lightboxMedia = document.querySelectorAll(".a-media");
+const mediaList = document.querySelectorAll(".media");
+const lightbox = document.querySelector(".lightbox");
 
-lightboxMedia = document.addEventListener("click", (event) => {
-  event.preventDefault();
-  console.log("test");
+// Parcourez chaque élément de la NodeList
+mediaList.forEach((media) => {
+  // Attachez un écouteur d'événements à chaque élément individuel
+  media.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("ca marche");
+  });
 });
