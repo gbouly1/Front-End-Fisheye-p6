@@ -100,13 +100,19 @@ form input {
   height: 50px;
 }
 
-#envoyer {
-  font-family: "DM sans";
-  font-size: 18px;
+#send-form {
   height: 70px;
   width: 170px;
-  color: white;
+  border-radius: 5px;
   background: #901c1c;
+  border: none;
+  font-family: "DM SANS";
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  font-style: normal;
+  cursor: pointer;
 }
 
 .opacity-fifty {
@@ -130,6 +136,7 @@ form input {
 .photograph-header .info-container {
   position: absolute;
   left: 5%;
+  max-width: 40%;
 }
 .photograph-header .info-container h2 {
   color: #d3573c;

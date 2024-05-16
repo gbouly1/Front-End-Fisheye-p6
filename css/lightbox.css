@@ -34,29 +34,31 @@
 
 .lightbox-next {
   background: url(../assets/icons/right.svg) center center / 100% 100%;
-  position: absolute;
-  top: 50%;
-  right: 10px;
+  right: 0;
 }
 
 .lightbox-prev {
   background: url(../assets/icons/left.svg) center center / 100% 100%;
-  position: absolute;
-  top: 50%;
-  left: 10px;
+  left: 0;
 }
 
 .lightbox-close {
   background: url(../assets/icons/close.svg) center center / 100% 100%;
   position: absolute;
+  text-indent: -10000px;
+  border: none;
+  width: 50px;
+  height: 50px;
   top: 10px;
-  right: 10px;
+  right: 0;
   z-index: 15;
+  cursor: pointer;
 }
 
-.lightbox-close,
 .lightbox-next,
 .lightbox-prev {
+  position: absolute;
+  top: 50%;
   border: none;
   width: 65px;
   height: 65px;
@@ -69,7 +71,7 @@
 .lightbox-img {
   display: flex;
   justify-content: center;
-  width: 80%;
+  max-width: 90%;
 }
 
 .lightbox-img img,
