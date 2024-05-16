@@ -173,7 +173,7 @@ form input {
     minmax(300px, 1fr)
   ); /* Définir la largeur minimale de la colonne */
   grid-gap: 100px; /* Espacement entre les éléments */
-  margin: 50px 100px 0 100px;
+  margin: 50px 100px 150px 100px;
 }
 
 .media img {
@@ -189,9 +189,11 @@ form input {
 }
 
 .info-media {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 2;
 }
 
 .info-media h3 {
@@ -242,6 +244,7 @@ form input {
   width: 24rem;
   height: 5rem;
   background: #db8876;
+  z-index: 2;
 }
 
 .boxMedia p {

@@ -1,5 +1,9 @@
 import { getPhotographerById } from "../pages/index.js";
 import { getMediaByPhotographerId } from "../pages/index.js";
+import {
+  openLightbox,
+  addImageArrayForNextPrevious,
+} from "../utils/lightbox.js";
 
 export function photographerTemplate(data, isPhotographerPage = true) {
   const { name, portrait, city, country, tagline, price, id } = data;
@@ -60,19 +64,31 @@ export function createMediaElement(media) {
   const aElement = document.createElement("a");
   aElement.classList.add("a-media");
   aElement.href = "#";
+  // aElement.addEventListener("click", (event) => {
+  //   event.preventDefault();
+  //   lightbox.style.display = "flex";
+  // });
 
   const mediaElement = document.createElement("div");
   mediaElement.classList.add("media");
 
   if (image) {
     const img = document.createElement("img");
-    img.src = `assets/sample-photos/${photographerId}/${image}`;
+    const imageUrl = `assets/sample-photos/${photographerId}/${image}`;
+    addImageArrayForNextPrevious(imageUrl);
+    img.src = imageUrl;
     img.alt = title;
+    img.setAttribute("data-src", imageUrl);
+    img.classList.add("img-media");
     aElement.appendChild(img);
   } else if (video) {
     const videoElement = document.createElement("video");
-    videoElement.src = `assets/sample-photos/${photographerId}/${video}`;
+    const videoUrl = `assets/sample-photos/${photographerId}/${video}`;
+    addImageArrayForNextPrevious(videoUrl);
+    videoElement.src = videoUrl;
     videoElement.controls = true;
+    videoElement.setAttribute("data-src", videoUrl);
+    videoElement.classList.add("video-media");
     aElement.appendChild(videoElement);
   }
   const infoMedia = document.createElement("div");
@@ -109,6 +125,20 @@ export function createMediaElement(media) {
 
   mediaElement.appendChild(aElement);
   mediaElement.appendChild(infoMedia);
+  // Gestionnaire d'événement pour chaque image miniature
+  aElement.addEventListener("click", (event) => {
+    event.preventDefault();
+    const target = event.currentTarget;
+    let type = "image";
+    if (target.querySelector("video")) {
+      type = "video";
+    }
+    const imageUrl = target
+      .querySelector("img, video")
+      .getAttribute("data-src"); // Récupère l'URL de l'image depuis l'attribut de données
+    // console.log(imageUrl);
+    openLightbox(imageUrl, type);
+  });
   return mediaElement;
 }
 
