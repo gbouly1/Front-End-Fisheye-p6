@@ -27,11 +27,6 @@
   margin: auto;
 }
 
-.img-lightbox {
-  object-fit: contain;
-  width: 100%;
-}
-
 .lightbox-next {
   background: url(../assets/icons/right.svg) center center / 100% 100%;
   right: 0;
@@ -68,14 +63,30 @@
 
 /* CSS de l'image de la lightbox  */
 
+.image-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+
 .lightbox-img {
   display: flex;
   justify-content: center;
   max-width: 90%;
+  height: 100%;
 }
 
 .lightbox-img img,
 .lightbox-img video {
   object-fit: cover;
   width: 100%;
+}
+
+.lightbox-title {
+  color: #901c1c;
+  font-family: "DM Sans";
+  font-size: 1.5rem;
+  font-weight: 400;
+  position: relative;
+  top: 2%;
 }

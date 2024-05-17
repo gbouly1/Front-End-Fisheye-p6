@@ -75,7 +75,7 @@ export function createMediaElement(media) {
   if (image) {
     const img = document.createElement("img");
     const imageUrl = `assets/sample-photos/${photographerId}/${image}`;
-    addImageArrayForNextPrevious(imageUrl);
+    addImageArrayForNextPrevious({ url: imageUrl, title });
     img.src = imageUrl;
     img.alt = title;
     img.setAttribute("data-src", imageUrl);
@@ -84,7 +84,7 @@ export function createMediaElement(media) {
   } else if (video) {
     const videoElement = document.createElement("video");
     const videoUrl = `assets/sample-photos/${photographerId}/${video}`;
-    addImageArrayForNextPrevious(videoUrl);
+    addImageArrayForNextPrevious({ url: videoUrl, title });
     videoElement.src = videoUrl;
     videoElement.controls = true;
     videoElement.setAttribute("data-src", videoUrl);
