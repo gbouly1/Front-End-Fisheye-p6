@@ -56,6 +56,7 @@ export async function getPhotographerById(id) {
   }
 }
 
+export let firstName = "";
 // Fonction pour afficher les détails du photographe
 export async function displayPhotographer(id) {
   try {
@@ -63,6 +64,7 @@ export async function displayPhotographer(id) {
     const headerSection = document.querySelector(".photograph-header");
 
     if (photographerData) {
+      firstName = photographerData.name;
       const photographerDOM = photographerTemplate(photographerData, false);
       const userCardDOM = photographerDOM.getUserCardDOM();
       headerSection.appendChild(userCardDOM);
