@@ -23,6 +23,7 @@ export function photographerTemplate(data, isPhotographerPage = true) {
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.setAttribute("alt", "protrait de " + name);
+    img.setAttribute("aria-label", name);
     imgContainer.appendChild(img);
 
     // création des éléments pour le texte
@@ -79,6 +80,7 @@ export function createMediaElement(media) {
     img.src = imageUrl;
     img.alt = title;
     img.setAttribute("data-src", imageUrl);
+    img.setAttribute("alt", title + ", miniature");
     img.classList.add("img-media");
     aElement.appendChild(img);
   } else if (video) {
@@ -88,6 +90,7 @@ export function createMediaElement(media) {
     videoElement.src = videoUrl;
     videoElement.controls = true;
     videoElement.setAttribute("data-src", videoUrl);
+    videoElement.setAttribute("alt", title + ", miniature");
     videoElement.classList.add("video-media");
     aElement.appendChild(videoElement);
   }
@@ -115,6 +118,7 @@ export function createMediaElement(media) {
   const heartLikes = document.createElement("img");
   heartLikes.classList.add("hearth-likes");
   heartLikes.src = `assets/icons/vector.png`;
+  heartLikes.setAttribute("alt", "likes");
 
   divLikes.appendChild(likesMedia);
   aLikes.appendChild(heartLikes);

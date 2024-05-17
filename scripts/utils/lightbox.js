@@ -46,13 +46,13 @@ export function openLightbox(mediaData, type = "image") {
   if (type === "image") {
     const img = document.createElement("img");
     img.src = mediaData;
-    img.alt = mediaData;
+    img.alt = media.title;
     img.setAttribute("data-type", "image");
     lightboxImg.appendChild(img);
   } else if (type === "video") {
     const video = document.createElement("video");
     video.src = mediaData;
-    video.alt = mediaData;
+    video.alt = media.title;
     video.controls = true;
     video.setAttribute("data-type", "video");
     lightboxImg.appendChild(video);

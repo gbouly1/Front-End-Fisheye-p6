@@ -12,12 +12,12 @@
   <body>
     <header id="header">
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" />
       </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" aria-label='ouverture de la modale'>Contactez-moi</button>
+        <button class="contact_button" aria-label='Contact Me'>Contactez-moi</button>
       </div>
       <div class="media-container">
       </div>
@@ -34,31 +34,31 @@
         </header>
 				<form action="/submit_form" id="form" method="post">
           <label for="prenom" aria-label="Prénom">Prénom :</label>
-          <input type="text" id="prenom" name="prenom" required><br>
+          <input type="text" id="prenom" name="prenom" aria-label="Votre prénom"required><br>
         
           <label for="nom" aria-label="Nom">Nom :</label>
-          <input type="text" id="nom" name="nom" required><br>
+          <input type="text" id="nom" name="nom"aria-label="Votre nom"required><br>
         
           <label for="email" aria-label="Email">Email :</label>
-          <input type="email" id="email" name="email" required><br>
+          <input type="email" id="email" name="email" aria-label="Votre email" required><br>
         
           <label for="message" aria-label="Votre message">Votre message :</label>
-          <input type="message" id="message" name="message"></input><br>
+          <input type="message" id="message" name="message" aria-label="Votre message"></input><br>
 
-          <button type="submit" id='send-form' aria-label="bouton d'envoie du formulaire">Envoyer</button>
+          <button type="submit" id='send-form' aria-label="Envoyer">Envoyer</button>
         
         </form>
 			</div>
 		</div>
     <div class="lightbox">
         <div class="lightbox-container">
-          <button class="lightbox-close">Fermer</button>
-          <button class="lightbox-prev">Précédent</button>
+          <button class="lightbox-close" aria-label="Ferme la lightbox">Fermer</button>
+          <button class="lightbox-prev" aria-label="Image précédente">Précédent</button>
           <div class="image-container">
             <div class="lightbox-img"></div>
             <p class="lightbox-title"></p>
           </div>
-          <button class="lightbox-next">Suivant</button>
+          <button class="lightbox-next" aria-label="image suivante">Suivant</button>
         </div>
     </div>
     <script src="scripts/templates/photographer.js" type="module" ></script>
