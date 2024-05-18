@@ -297,3 +297,34 @@ form input {
 .hearth-likes-box {
   color: #000;
 }
+
+/* trier  */
+
+.filter-wrap {
+  margin: 50px 0 20px 100px;
+}
+
+.filter-text {
+  color: #000;
+
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#filter {
+  color: #fff;
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 5px;
+  width: 170px;
+  height: 70px;
+  background: #901c1c;
+  cursor: pointer;
+  padding-left: 15px;
+}

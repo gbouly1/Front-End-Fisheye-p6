@@ -19,6 +19,16 @@
       <div class="photograph-header">
         <button class="contact_button" aria-label='Contact Me'>Contactez-moi</button>
       </div>
+
+      <div class="filter-wrap">
+        <label class="filter-text" for="filter">Trier par</label>
+            <select name="filter" id="filter">
+              <option value="Popularité">Popularité</option>
+              <option value="Date">Date</option>
+              <option value="Titre">Titre</option>
+            </select> 
+      </div>
+
       <div class="media-container">
       </div>
     </main>
@@ -32,6 +42,7 @@
           
           <img src="assets/icons/close-modale.svg" class="close_button" alt="Fermeture de la modale"/>
         </header>
+        
 				<form action="/submit_form" id="form" method="post">
           <label for="prenom" aria-label="Prénom">Prénom :</label>
           <input type="text" id="prenom" name="prenom" aria-label="Votre prénom"required><br>
@@ -65,6 +76,7 @@
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js" type="module"></script>
     <script src="/scripts/utils/lightbox.js" type="module"></script>
+    <script src="/scripts/utils/filter.js" type="module"></script>
     <script src="scripts/pages/index.js" type="module"></script>
   </body>
 </html>
