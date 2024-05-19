@@ -302,6 +302,9 @@ form input {
 
 .filter-wrap {
   margin: 50px 0 20px 100px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .filter-text {

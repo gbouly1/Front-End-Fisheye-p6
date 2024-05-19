@@ -1,5 +1,7 @@
-import { getPhotographerById } from "../pages/index.js";
-import { getMediaByPhotographerId } from "../pages/index.js";
+import {
+  getPhotographerById,
+  getMediaByPhotographerId,
+} from "../pages/index.js";
 import {
   openLightbox,
   addImageArrayForNextPrevious,
@@ -65,10 +67,6 @@ export function createMediaElement(media) {
   const aElement = document.createElement("a");
   aElement.classList.add("a-media");
   aElement.href = "#";
-  // aElement.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  //   lightbox.style.display = "flex";
-  // });
 
   const mediaElement = document.createElement("div");
   mediaElement.classList.add("media");

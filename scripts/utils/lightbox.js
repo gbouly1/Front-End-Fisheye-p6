@@ -1,5 +1,6 @@
 let currentIndex = 0;
 const imagesArray = [];
+console.log(imagesArray);
 
 export function addImageArrayForNextPrevious(image) {
   imagesArray.push(image);
@@ -24,7 +25,7 @@ lightboxPrevBtn.addEventListener("click", () => {
 
 // Gestionnaire d'événements pour le bouton "Suivant"
 lightboxNextBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1 + imagesArray.length) % imagesArray.length;
+  currentIndex = (currentIndex + 1) % imagesArray.length;
   updateLightboxContent();
 });
 
@@ -38,7 +39,7 @@ closeLightbox.addEventListener("click", (event) => {
 // Ouverture de la lightbox
 export function openLightbox(mediaData, type = "image") {
   const media = imagesArray.find((m) => m.url === mediaData);
-  currentIndex = imagesArray.indexOf(mediaData);
+  currentIndex = imagesArray.indexOf(media);
   // Supprimer le contenu précédent de la lightbox
   while (lightboxImg.firstChild) {
     lightboxImg.removeChild(lightboxImg.firstChild);
@@ -60,6 +61,7 @@ export function openLightbox(mediaData, type = "image") {
 
   lightboxTitle.textContent = media.title;
   lightbox.style.display = "flex";
+  console.log(currentIndex);
 }
 
 // Update de la lightbox par rapport a son index

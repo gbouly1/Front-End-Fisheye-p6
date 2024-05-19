@@ -1,9 +1,13 @@
-import { displayPhotographer } from "./index.js";
-import { totalLikesByPhotographer } from "../templates/photographer.js";
-import { displayMediaByPhotographerId } from "./index.js";
+import {
+  displayPhotographer,
+  displayMediaByPhotographerId,
+  getMediaByPhotographerId,
+} from "./index.js";
+import {
+  totalLikesByPhotographer,
+  createMediaElement,
+} from "../templates/photographer.js";
 import { sortMedia } from "../utils/filter.js";
-import { getMediaByPhotographerId } from "./index.js";
-import { createMediaElement } from "../templates/photographer.js";
 
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);

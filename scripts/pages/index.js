@@ -1,5 +1,7 @@
-import { photographerTemplate } from "../templates/photographer.js";
-import { createMediaElement } from "../templates/photographer.js";
+import {
+  photographerTemplate,
+  createMediaElement,
+} from "../templates/photographer.js";
 
 // On récupère les données des photographes dans le dossier JSON
 async function getPhotographers() {
