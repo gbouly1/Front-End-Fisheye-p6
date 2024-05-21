@@ -138,7 +138,6 @@ export function createMediaElement(media) {
     const imageUrl = target
       .querySelector("img, video")
       .getAttribute("data-src"); // Récupère l'URL de l'image depuis l'attribut de données
-    // console.log(imageUrl);
     openLightbox(imageUrl, type);
   });
   return mediaElement;
