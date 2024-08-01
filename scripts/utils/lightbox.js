@@ -6,6 +6,7 @@ export function addImageArrayForNextPrevious(image) {
 }
 
 // let currentIndex = 0;
+const main = document.getElementById("main");
 const lightboxImg = document.querySelector(".lightbox-img");
 const lightboxTitle = document.querySelector(".lightbox-title");
 const lightbox = document.querySelector(".lightbox");
@@ -37,6 +38,7 @@ if (
   closeLightbox.addEventListener("click", (event) => {
     event.preventDefault();
     lightbox.style.display = "none";
+    main.style.display = "block";
   });
 }
 
@@ -63,6 +65,7 @@ export function openLightbox(mediaData, type = "image") {
     lightboxImg.appendChild(video);
   }
 
+  main.style.display = "none";
   lightboxTitle.textContent = media.title;
   lightbox.style.display = "flex";
 }
