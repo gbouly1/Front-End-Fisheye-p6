@@ -149,13 +149,14 @@ form input {
   left: 5%;
   max-width: 40%;
 }
-.photograph-header .info-container h2 {
+.photograph-header .info-container h1 {
   color: #d3573c;
   font-family: "DM Sans";
-  font-size: 64px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin: 0;
 }
 
 .photograph-header .info-container .cityElement {
@@ -202,6 +203,7 @@ form input {
 }
 
 .a-media {
+  cursor: pointer;
   display: block;
   height: 300px;
   overflow: hidden;

@@ -31,9 +31,9 @@ export function photographerTemplate(data, isPhotographerPage = true) {
     // création des éléments pour le texte
     const infoContainer = document.createElement("div");
     infoContainer.classList.add("info-container");
-    const h2 = document.createElement("h2");
+    const h2 = document.createElement("h1");
     h2.textContent = name;
-    const cityElement = document.createElement("p");
+    const cityElement = document.createElement("h2");
     cityElement.innerHTML = `${city}, ${country}`;
     cityElement.classList.add("cityElement");
     const taglineElement = document.createElement("p");
@@ -66,7 +66,6 @@ export function createMediaElement(media) {
   const { title, image, video, likes, photographerId } = media;
   const aElement = document.createElement("a");
   aElement.classList.add("a-media");
-  aElement.href = "#";
 
   const mediaElement = document.createElement("div");
   mediaElement.classList.add("media");
@@ -99,7 +98,7 @@ export function createMediaElement(media) {
 
   const divLikes = document.createElement("div");
   divLikes.classList.add("div-likes");
-  const likesMedia = document.createElement("p");
+  const likesMedia = document.createElement("h3");
   likesMedia.innerHTML = likes;
   const aLikes = document.createElement("a");
   aLikes.href = "#";
@@ -166,15 +165,16 @@ export async function totalLikesByPhotographer(photographerId) {
 
     // On créer les élément contenant les likes et le coeur
     const divTotalLikes = document.createElement("div");
-    const totalLikesElement = document.createElement("p");
+    const totalLikesElement = document.createElement("h3");
     totalLikesElement.classList.add("total-likes");
     totalLikesElement.innerHTML = totalLikes;
     const hearthElement = document.createElement("img");
     hearthElement.classList.add("hearth-likes-box");
     hearthElement.src = `assets/icons/favorite.png`;
+    hearthElement.setAttribute("alt", "hearth total like");
 
     // on créer l'élément contenant le prix
-    const priceElement = document.createElement("p");
+    const priceElement = document.createElement("h3");
     priceElement.innerHTML = `${data.price}€ / jour`;
 
     divTotalLikes.appendChild(totalLikesElement);
