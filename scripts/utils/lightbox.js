@@ -1,5 +1,5 @@
 let currentIndex = 0;
-const imagesArray = [];
+export const imagesArray = [];
 
 export function addImageArrayForNextPrevious(image) {
   imagesArray.push(image);
@@ -34,15 +34,17 @@ if (
   document.addEventListener("keydown", handleKeyDown);
 }
 
-// Fonction pour afficher le média précédent
-function showPreviousMedia() {
-  currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+function showNextMedia() {
+  console.log("Current index before:", currentIndex);
+  currentIndex = (currentIndex + 1) % imagesArray.length;
+  console.log("Current index after:", currentIndex);
   updateLightboxContent();
 }
 
-// Fonction pour afficher le média suivant
-function showNextMedia() {
-  currentIndex = (currentIndex + 1) % imagesArray.length;
+function showPreviousMedia() {
+  console.log("Current index before:", currentIndex);
+  currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
+  console.log("Current index after:", currentIndex);
   updateLightboxContent();
 }
 

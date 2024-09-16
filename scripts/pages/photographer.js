@@ -8,6 +8,10 @@ import {
   createMediaElement,
 } from "../templates/photographer.js";
 import { sortMedia } from "../utils/filter.js";
+import {
+  imagesArray,
+  addImageArrayForNextPrevious,
+} from "../utils/lightbox.js";
 
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -20,7 +24,16 @@ async function displaySortedMedia(criteria) {
   const mediaContainer = document.querySelector(".media-container");
   mediaContainer.innerHTML = ""; // Clear existing media
 
+  // Reset et mise à jour de imagesArray
+  imagesArray.length = 0; // Vider le tableau
   sortedMedia.forEach((media) => {
+    addImageArrayForNextPrevious({
+      url: media.image
+        ? `assets/sample-photos/${photographerId}/${media.image}`
+        : `assets/sample-photos/${photographerId}/${media.video}`,
+      title: media.title,
+    });
+
     const mediaElement = createMediaElement(media);
     mediaContainer.appendChild(mediaElement);
   });

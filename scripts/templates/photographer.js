@@ -66,6 +66,8 @@ export function createMediaElement(media) {
   const { title, image, video, likes, photographerId } = media;
   const aElement = document.createElement("a");
   aElement.classList.add("a-media");
+  aElement.href = "#";
+  aElement.setAttribute("aria-label", "vidéo ou image");
 
   const mediaElement = document.createElement("div");
   mediaElement.classList.add("media");
