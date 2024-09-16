@@ -26,13 +26,11 @@ async function displaySortedMedia(criteria) {
 
   // Reset et mise à jour de imagesArray
   imagesArray.length = 0; // Vider le tableau
+
   sortedMedia.forEach((media) => {
-    addImageArrayForNextPrevious({
-      url: media.image
-        ? `assets/sample-photos/${photographerId}/${media.image}`
-        : `assets/sample-photos/${photographerId}/${media.video}`,
-      title: media.title,
-    });
+    const mediaUrl = media.image
+      ? `assets/sample-photos/${photographerId}/${media.image}`
+      : `assets/sample-photos/${photographerId}/${media.video}`;
 
     const mediaElement = createMediaElement(media);
     mediaContainer.appendChild(mediaElement);

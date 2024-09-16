@@ -1,12 +1,9 @@
 let currentIndex = 0;
 export const imagesArray = [];
 
-export function addImageArrayForNextPrevious(image) {
-  imagesArray.push(image);
-}
-
 const main = document.getElementById("main");
 const lightboxImg = document.querySelector(".lightbox-img");
+lightboxImg.setAttribute("alt", "photo lightbox");
 const lightboxTitle = document.querySelector(".lightbox-title");
 const lightbox = document.querySelector(".lightbox");
 
@@ -35,16 +32,12 @@ if (
 }
 
 function showNextMedia() {
-  console.log("Current index before:", currentIndex);
   currentIndex = (currentIndex + 1) % imagesArray.length;
-  console.log("Current index after:", currentIndex);
   updateLightboxContent();
 }
 
 function showPreviousMedia() {
-  console.log("Current index before:", currentIndex);
   currentIndex = (currentIndex - 1 + imagesArray.length) % imagesArray.length;
-  console.log("Current index after:", currentIndex);
   updateLightboxContent();
 }
 
@@ -130,4 +123,8 @@ function updateLightboxContent() {
   }
 
   lightboxTitle.textContent = media.title;
+}
+
+export function addImageArrayForNextPrevious(image) {
+  imagesArray.push(image);
 }

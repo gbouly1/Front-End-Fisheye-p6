@@ -149,6 +149,9 @@ form input {
   position: absolute;
   left: 5%;
   max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .photograph-header .info-container h1 {
   color: #d3573c;
